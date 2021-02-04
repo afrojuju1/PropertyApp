@@ -1,14 +1,11 @@
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs'
 import React from 'react'
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { TouchableOpacity } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import { primaryColor } from '../constants/Colors'
 import styled from 'styled-components/native'
 
-interface PP {
-  // isFocused: boolean
-}
-const Container = styled.View<PP>`
+const Container = styled.View`
   flex-direction: row;
   height: 100px;
   background-color: wheat;
@@ -17,6 +14,26 @@ const Container = styled.View<PP>`
   border-top-right-radius: 30px;
   padding: 20px;
   justify-content: space-evenly;
+`
+
+const Wrapper = styled.View<{ isFocused: boolean }>`
+  flex: ${props => props.isFocused ? 1.5 : 0.5};
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 30px;
+  background-color: ${props => props.isFocused ? primaryColor : undefined};
+  padding: 15px;
+  border-radius: 20px;
+  align-self: flex-start;
+`
+
+const Label = styled.Text`
+  color: #fff;
+  font-size: 16px;
+  margin-left: 5px;
+  font-weight: bold;
+  text-transform: capitalize;
 `
 
 export function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
@@ -70,57 +87,17 @@ export function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
             style={{
             }}
           >
-            <View style={{
-              flex: isFocused ? 1.5 : 0.5,
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'flex-start',
-              minHeight: 30,
-              backgroundColor: isFocused ? primaryColor : undefined,
-              padding: 15,
-              borderRadius: 20,
-              alignSelf: 'flex-start',
-              // marginRight: isFocused ? 10 : 0,
-            }}>
+            <Wrapper isFocused={isFocused}>
               <Ionicons
                 name="md-grid"
                 size={isFocused ? 25 : 15}
                 color={isFocused ? '#fff' : '#000'}
               />
-              {isFocused &&
-                <Text
-                  numberOfLines={1}
-                  style={{
-                    color: '#fff',
-                    fontSize: 16,
-                    marginLeft: 5,
-                    fontWeight: 'bold',
-                  }}
-                >
-                  {label}
-                </Text>
-              }
-            </View>
+              {isFocused && <Label numberOfLines={1}>{label}</Label>}
+            </Wrapper>
           </TouchableOpacity>
         );
       })}
     </Container>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-});

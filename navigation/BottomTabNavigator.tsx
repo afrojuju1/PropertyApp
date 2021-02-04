@@ -1,15 +1,12 @@
-import { Ionicons } from '@expo/vector-icons';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStackNavigator } from '@react-navigation/stack';
-import * as React from 'react';
-import { View } from 'react-native'
+import { Ionicons } from '@expo/vector-icons'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { createStackNavigator } from '@react-navigation/stack'
+import * as React from 'react'
 import { TabBar } from '../components/TabBar'
-
-import Colors from '../constants/Colors';
-import useColorScheme from '../hooks/useColorScheme';
-import DashboardScreen from '../screens/DashboardScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import useColorScheme from '../hooks/useColorScheme'
+import DashboardScreen from '../screens/DashboardScreen'
+import TabTwoScreen from '../screens/TabTwoScreen'
+import { BOTTOM_TABS, BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types'
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -18,40 +15,40 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName={BOTTOM_TABS.dashboard}
       tabBarOptions={{ activeTintColor: undefined }}
       tabBar={TabBar}
     >
       <BottomTab.Screen
-        name="Dashboard"
+        name={BOTTOM_TABS.dashboard}
         component={TabOneNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="md-grid" color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
+        name={BOTTOM_TABS.properties}
         component={TabTwoNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="TabThree"
+        name={BOTTOM_TABS.tabThree}
         component={TabTwoNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="TabFour"
+        name={BOTTOM_TABS.tabFour}
         component={TabTwoNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="TabFive"
+        name={BOTTOM_TABS.tabFive}
         component={TabTwoNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,

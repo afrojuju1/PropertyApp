@@ -3,9 +3,20 @@ export type RootStackParamList = {
   NotFound: undefined;
 };
 
+export enum BOTTOM_TABS {
+  dashboard = 'dashboard',
+  properties = 'properties',
+  tabThree = 'tabThree',
+  tabFour = 'tabFour',
+  tabFive = 'tabFive',
+}
+
 export type BottomTabParamList = {
-  TabOne: undefined;
-  TabTwo: undefined;
+  [BOTTOM_TABS.dashboard]: undefined;
+  [BOTTOM_TABS.properties]: undefined;
+  [BOTTOM_TABS.tabThree]: undefined;
+  [BOTTOM_TABS.tabFour]: undefined;
+  [BOTTOM_TABS.tabFive]: undefined;
 };
 
 export type TabOneParamList = {

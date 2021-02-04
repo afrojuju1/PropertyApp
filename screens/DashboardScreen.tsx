@@ -1,6 +1,5 @@
 import React from 'react'
 import { Ionicons } from '@expo/vector-icons'
-import { View } from 'react-native'
 import { primaryColor } from '../constants/Colors'
 import styled from 'styled-components/native'
 import Svg, { Circle, Rect } from 'react-native-svg'
@@ -57,10 +56,9 @@ function SvgComponent(props: any) {
   );
 }
 
-export default function DashboardScreen() {
+function EmptyView() {
   return (
-    <Container>
-
+    <>
       <SvgComponent />
 
       <TitleWrapper>
@@ -81,6 +79,14 @@ export default function DashboardScreen() {
         />
         <ButtonText numberOfLines={1}>Add a Property</ButtonText>
       </Button>
+    </>
+  )
+}
+
+export default function DashboardScreen() {
+  return (
+    <Container>
+      <EmptyView />
     </Container>
   )
 }
